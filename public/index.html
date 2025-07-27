@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - Advanced Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Minesweeper Advanced</h1>
+            <div class="game-info">
+                <div class="mine-counter">
+                    <span>💣</span>
+                    <span id="mine-count">10</span>
+                </div>
+                <button id="reset-btn" class="reset-button">🙂</button>
+                <div class="timer">
+                    <span>⏱️</span>
+                    <span id="timer">000</span>
+                </div>
+            </div>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn active" data-difficulty="easy">Easy (9×9)</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium (16×16)</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard (16×30)</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-section">
+                <div class="board-wrapper">
+                    <div id="game-board" class="game-board"></div>
+                </div>
+                <div id="game-message" class="game-message hidden"></div>
+            </div>
+
+            <!-- Auto-Solver Panel -->
+            <div class="solver-panel">
+                <h3>🤖 AI Auto-Solver</h3>
+                <div class="solver-controls">
+                    <button id="solver-start" class="solver-btn">Start Solver</button>
+                    <button id="solver-stop" class="solver-btn" disabled>Stop Solver</button>
+                    <button id="solver-step" class="solver-btn">Single Step</button>
+                </div>
+                <div class="solver-settings">
+                    <label for="solver-speed">Speed:</label>
+                    <select id="solver-speed">
+                        <option value="2000">Slow (2s)</option>
+                        <option value="1000" selected>Normal (1s)</option>
+                        <option value="500">Fast (0.5s)</option>
+                        <option value="100">Very Fast (0.1s)</option>
+                    </select>
+                </div>
+                <div class="solver-status">
+                    <div class="status-item">
+                        <span>Status:</span>
+                        <span id="solver-status">Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Success Rate:</span>
+                        <span id="solver-success-rate">--</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Strategy:</span>
+                        <span id="solver-strategy">--</span>
+                    </div>
+                </div>
+                <div class="solver-progress">
+                    <div class="progress-bar">
+                        <div id="solver-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="solver-progress-text">0%</span>
+                </div>
+            </div>
+
+            <!-- Leaderboard Panel -->
+            <div class="leaderboard-panel">
+                <h3>🏆 Leaderboard</h3>
+                <div class="leaderboard-controls">
+                    <select id="leaderboard-difficulty">
+                        <option value="">All Difficulties</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                    <button id="refresh-leaderboard" class="leaderboard-btn">Refresh</button>
+                    <button id="clear-leaderboard" class="leaderboard-btn danger">Clear All</button>
+                </div>
+                <div id="leaderboard-content" class="leaderboard-content">
+                    <div class="loading">Loading leaderboard...</div>
+                </div>
+            </div>
+
+            <!-- Player Name Modal -->
+            <div id="player-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h3>🎉 Congratulations!</h3>
+                    <p>You won! Enter your name for the leaderboard:</p>
+                    <input type="text" id="player-name" placeholder="Enter your name" maxlength="50">
+                    <div class="modal-buttons">
+                        <button id="submit-score" class="modal-btn primary">Submit Score</button>
+                        <button id="skip-score" class="modal-btn">Skip</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
